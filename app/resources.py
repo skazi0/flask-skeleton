@@ -6,10 +6,11 @@ from sqlalchemy.orm.exc import NoResultFound
 from io import BytesIO
 import json
 
-from app import db
+from app import db, api
 from app.models import *
 
 
+@api.route('/api/users')
 class Users(Resource):
     def post(self):
         try:
@@ -35,6 +36,7 @@ class Users(Resource):
             return {'message': 'user already exists'}, 409
 
 
+@api.route('/api/sessions')
 class Sessions(Resource):
     def user_session(self):
         return {'authenticated': True,

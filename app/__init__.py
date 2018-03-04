@@ -12,11 +12,11 @@ app.config.from_envvar('APP_CONFIG')
 
 bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
-
-from app.models import *
-from app.resources import *
-
 api = Api(app)
+
+# import here to have db and api defined already
+from app.models import *  # noqa
+from app.resources import *  # noqa
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -30,10 +30,6 @@ def load_user(id):
 @app.template_filter('date')
 def date_filter(s):
     return s.split('T')[0] if s is not None else s
-
-
-api.add_resource(Users, '/api/users')
-api.add_resource(Sessions, '/api/sessions')
 
 
 @app.route('/')
