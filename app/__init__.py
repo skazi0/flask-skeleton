@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from flask_restful import Api
+from flask_restplus import Api
 
 from app.config import BaseConfig
 
