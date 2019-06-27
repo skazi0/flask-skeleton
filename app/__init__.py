@@ -19,7 +19,7 @@ def index():
 
 bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
-api = Api(app, doc='/doc/')
+api = Api(app, doc='/api/')
 
 # import here to have db and api defined already
 from app.models import *  # noqa
